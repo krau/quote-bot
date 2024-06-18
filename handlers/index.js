@@ -16,7 +16,6 @@ module.exports = {
   handleSettingsRate: require('./rate-settings'),
   handlePrivacy: require('./privacy-settings'),
   handleLanguage: require('./language'),
-  handleSticker: require('./sticker'),
   handlePing: require('./ping'),
   handleChatMember: require('./chat-member'),
   handleInlineQuery: require('./inline-query')

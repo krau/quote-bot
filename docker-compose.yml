@@ -12,14 +12,6 @@ services:
         networks:
             - quotly
         command: node index.js
-        depends_on:
-            - redis
-
-    redis:
-        image: redis:latest
-        restart: always
-        networks:
-            - quotly
 networks:
     quotly:
         external: true

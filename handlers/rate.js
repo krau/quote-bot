@@ -44,11 +44,11 @@ module.exports = async ctx => {
     inline_keyboard: [
       [
         {
-          text: `👍 ${quoteDb.rate.votes[0].vote.length || ''}`,
+          text: `❤️ ${quoteDb.rate.votes[0].vote.length || ''}`,
           callback_data: `irate:${quoteDb._id}:❤️`
         },
         {
-          text: `👎 ${quoteDb.rate.votes[1].vote.length || ''}`,
+          text: `😡 ${quoteDb.rate.votes[1].vote.length || ''}`,
           callback_data: `irate:${quoteDb._id}:😡`
         }
       ]

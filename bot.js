@@ -314,8 +314,8 @@ bot.hears(/^\/(hidden)/, onlyAdmin, handleSettingsHidden)
 bot.command('qemoji', onlyAdmin, handleEmoji)
 bot.hears(/^\/(qgab) (\d+)/, onlyGroup, onlyAdmin, handleGabSettings)
 bot.hears(/^\/(qrate)/, onlyGroup, onlyAdmin, handleSettingsRate)
-bot.action(/^(rate):(👍|👎)/, handleRate)
-bot.action(/^(irate):(.*):(👍|👎)/, handleRate)
+bot.action(/^(rate):(❤️|�)/, handleRate)
+bot.action(/^(irate):(.*):(❤️|�)/, handleRate)
 
 bot.on('new_chat_members', (ctx, next) => {
   if (ctx.message.new_chat_member.id === ctx.botInfo.id) return handleHelp(ctx)

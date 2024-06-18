@@ -495,8 +495,8 @@ module.exports = async (ctx, next) => {
 
       if (ctx.group && (ctx.group.info.settings.rate || flag.rate)) {
         replyMarkup = Markup.inlineKeyboard([
-          Markup.callbackButton('👍', 'rate:👍'),
-          Markup.callbackButton('👎', 'rate:👎')
+          Markup.callbackButton('❤️', 'rate:❤️'),
+          Markup.callbackButton('😡', 'rate:😡')
         ])
       }
 
@@ -598,11 +598,11 @@ module.exports = async (ctx, next) => {
         quoteDb.rate = {
           votes: [
             {
-              name: '👍',
+              name: '❤️',
               vote: []
             },
             {
-              name: '👎',
+              name: '😡',
               vote: []
             }
           ],

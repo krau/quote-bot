@@ -27,8 +27,8 @@ composer.on('inline_query', async (ctx) => {
           sticker_file_id: quote.file_id,
           reply_markup: Markup.inlineKeyboard([
             [
-              Markup.callbackButton(`👍 ${quote.rate.votes[0].vote.length || ''}`, `irate:${quote._id}:👍`),
-              Markup.callbackButton(`👎 ${quote.rate.votes[1].vote.length || ''}`, `irate:${quote._id}:👎`)
+              Markup.callbackButton(`❤️ ${quote.rate.votes[0].vote.length || ''}`, `irate:${quote._id}:❤️`),
+              Markup.callbackButton(`😡 ${quote.rate.votes[1].vote.length || ''}`, `irate:${quote._id}:😡`)
             ]
           ])
         })
@@ -54,8 +54,8 @@ composer.on('inline_query', async (ctx) => {
         sticker_file_id: quote.file_id,
         reply_markup: Markup.inlineKeyboard([
           [
-            Markup.callbackButton(`👍 ${quote.rate.votes[0].vote.length || ''}`, `irate:${quote._id}:👍`),
-            Markup.callbackButton(`👎 ${quote.rate.votes[1].vote.length || ''}`, `irate:${quote._id}:👎`)
+            Markup.callbackButton(`❤️ ${quote.rate.votes[0].vote.length || ''}`, `irate:${quote._id}:❤️`),
+            Markup.callbackButton(`😡 ${quote.rate.votes[1].vote.length || ''}`, `irate:${quote._id}:😡`)
           ]
         ])
       })

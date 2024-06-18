@@ -9,9 +9,14 @@ services:
             options:
                 max-size: "10m"
                 max-file: "3"
-        networks:
-            - quotly
         command: node index.js
-networks:
-    quotly:
-        external: true
+    api:
+        image: ghcr.io/lyosu/quote-api:latest
+        restart: always
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
+        env_file: .env
+        command: node index.js

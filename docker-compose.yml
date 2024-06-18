@@ -1,14 +1,13 @@
 services:
     bot:
-        build:
-            context: .
-        env_file: .env
+        image: ghcr.io/krau/quote-bot:latest
         restart: always
         logging:
             driver: "json-file"
             options:
                 max-size: "10m"
                 max-file: "3"
+        env_file: .env
         command: node index.js
     api:
         image: ghcr.io/lyosu/quote-api:latest

@@ -32,7 +32,7 @@ docker-compose up -d
 ```yaml
 services:
   bot:
-    image: ghcr.io/krau/quote-bot:latest
+    image: ghcr.io/krau/quote-bot:main
     restart: always
     logging:
       driver: "json-file"

@@ -20,3 +20,5 @@ services:
                 max-file: "3"
         env_file: .env
         command: node index.js
+        volumes:
+            - ./data/fonts:/app/assets/fonts

@@ -11,21 +11,7 @@ services:
                 max-file: "3"
         networks:
             - quotly
-        command: bun run start
-    mongo:
-        restart: always
-        image: mongo:4
-        volumes:
-            - mongo-volume:/data/db
-        ports:
-            - 127.0.0.1:27017:27017
-        networks:
-            - quotly
-    
-volumes:
-    mongo-volume:
-        driver: 'local'
-
+        command: node index.js
 networks:
     quotly:
         external: true

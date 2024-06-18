@@ -1,8 +1,8 @@
-FROM oven/bun:latest
+FROM node:slim
 
 ENV WORKDIR /app
 WORKDIR $WORKDIR
 
 ADD . $WORKDIR
 
-RUN bun install
+RUN npm install

@@ -1,54 +1,8 @@
-const got = require('got')
 const Redis = require('ioredis')
 
 const redis = new Redis()
 
 const PREFIX = 'quotly'
-
-const getTopStickerSets = async () => {
-  const stickerSets = await redis.zrevrange(`${PREFIX}:sticker_sets`, 0, -1, 'WITHSCORES')
-  const stickerCount = {}
-
-  for (let i = 0; i < stickerSets.length; i += 2) {
-    const stickerSet = stickerSets[i]
-    const count = parseInt(stickerSets[i + 1], 10)
-    stickerCount[stickerSet] = count
-  }
-
-  const sortedStickerSets = Object.entries(stickerCount)
-    .sort((a, b) => b[1] - a[1])
-    .map(entry => {
-      if (entry[1] <= 10) {
-        return null
-      }
-      return {
-        name: entry[0],
-        count: entry[1]
-      }
-    })
-    .filter(entry => entry)
-
-  for (const stickerSet of sortedStickerSets) {
-    await got.post(process.env.FSTIK_API_URI + '/publishStickerSet?token=' + process.env.BOT_TOKEN, {
-      json: {
-        name: stickerSet.name,
-        count: stickerSet.count
-      }
-    }).catch((error) => {
-      console.error('Error publishing sticker set:', error)
-    })
-    redis.del(`${PREFIX}:sticker_set:${stickerSet.name}:*`)
-    redis.zrem(`${PREFIX}:sticker_sets`, stickerSet.name)
-  }
-
-  return sortedStickerSets
-}
-
-setInterval(async () => {
-  const topStickerSets = await getTopStickerSets()
-
-  console.log(`Top 10 sticker sets in the last minute: ${topStickerSets.map(set => `${set.name} (${set.count})`).join(', ')}`)
-}, 1000 * 60 * 10)
 
 module.exports = async (ctx, next) => {
   if (!ctx.chat.username) {

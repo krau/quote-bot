@@ -32,30 +32,30 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-let botInfo
+// let botInfo
 
-async function loopClearStickerPack() {
-  if (!botInfo) botInfo = await telegram.getMe()
+// async function loopClearStickerPack() {
+//   if (!botInfo) botInfo = await telegram.getMe()
 
-  setTimeout(async () => {
-    const stickerSet = await telegram.getStickerSet(config.globalStickerSet.name + botInfo.username).catch((error) => {
-      console.log('loopClearStickerPack getStickerSet error:', error)
-    })
-    if (!stickerSet) return
-    for (const i in stickerSet.stickers) {
-      const sticker = stickerSet.stickers[i]
-      if (i > config.globalStickerSet.save_sticker_count - 1) {
-        console.log(`deleting sticker ${stickerSet.stickers[i].file_id}`)
-        await telegram.deleteStickerFromSet(sticker.file_id).catch((error) => {
-          console.log('loopClearStickerPack deleteStickerFromSet error:', error)
-        })
-      }
-    }
-    loopClearStickerPack()
-  }, 500)
-}
+//   setTimeout(async () => {
+//     const stickerSet = await telegram.getStickerSet(config.globalStickerSet.name + botInfo.username).catch((error) => {
+//       console.warn('loopClearStickerPack getStickerSet error:', error)
+//     })
+//     if (!stickerSet) return
+//     for (const i in stickerSet.stickers) {
+//       const sticker = stickerSet.stickers[i]
+//       if (i > config.globalStickerSet.save_sticker_count - 1) {
+//         console.log(`deleting sticker ${stickerSet.stickers[i].file_id}`)
+//         await telegram.deleteStickerFromSet(sticker.file_id).catch((error) => {
+//           console.log('loopClearStickerPack deleteStickerFromSet error:', error)
+//         })
+//       }
+//     }
+//     loopClearStickerPack()
+//   }, 500)
+// }
 
-loopClearStickerPack()
+// loopClearStickerPack()
 
 const hashCode = (s) => {
   const l = s.length

@@ -39,17 +39,17 @@ module.exports = async ctx => {
   await quoteDb.save()
 
   ctx.state.answerCbQuery = [resultText]
-  
+
   await ctx.editMessageReplyMarkup({
     inline_keyboard: [
       [
         {
           text: `👍 ${quoteDb.rate.votes[0].vote.length || ''}`,
-          callback_data: `irate:${quoteDb._id}:👍`
+          callback_data: `irate:${quoteDb._id}:❤️`
         },
         {
           text: `👎 ${quoteDb.rate.votes[1].vote.length || ''}`,
-          callback_data: `irate:${quoteDb._id}:👎`
+          callback_data: `irate:${quoteDb._id}:😡`
         }
       ]
     ]

@@ -7,7 +7,6 @@ description:
   long: |
     记录群友怪话!
 help: |2
-  <b>你好！</b>
   语录生成 Bot (Edited by Krau).
   使用 /q 回复一条消息, 或者直接将其发给 Bot.
   在群组或私聊中都可使用.
@@ -87,8 +86,6 @@ sticker:
     error: <b>无法删除该贴纸。</b>\n<pre>${error}</pre>
   empty_forward: |
     请回复一条消息.
-  fstik: |
-    这个 Bot 不支持此功能.
 rate:
   vote:
     rated: |

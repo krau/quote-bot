@@ -7,7 +7,7 @@ const rateLimit = require('telegraf-ratelimit')
 const I18n = require('telegraf-i18n')
 const io = require('@pm2/io')
 const { db } = require('./database')
-const { stats, onlyGroup, onlyAdmin } = require('./middlewares')
+const { onlyGroup, onlyAdmin } = require('./middlewares')
 const {
   handleHelp,
   handleQuote,
@@ -25,7 +25,6 @@ const {
   handleSettingsRate,
   handlePrivacy,
   handleLanguage,
-  handleFstik,
   handleSticker,
   handlePing,
   handleChatMember,
@@ -86,8 +85,6 @@ bot.use((ctx, next) => {
     })
 })
 
-// bot.use(require('./middlewares/metrics'))
-bot.use(stats)
 
 bot.use((ctx, next) => {
   const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'))
@@ -311,7 +308,6 @@ bot.use((ctx, next) => {
 
 bot.command('q', handleQuote)
 bot.hears(/\/q_(.*)/, handleGetQuote)
-bot.hears(/^\/qs(?:\s([^\s]+)|)/, handleFstik)
 bot.hears(/^\/qs(?:\s([^\s]+)|)/, onlyGroup, onlyAdmin, handleSave)
 bot.command('qd', onlyGroup, onlyAdmin, handleDelete)
 bot.command('qdrand', onlyGroup, onlyAdmin, handleDeleteRandom)

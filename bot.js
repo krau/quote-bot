@@ -87,8 +87,6 @@ bot.use((ctx, next) => {
 
 
 bot.use((ctx, next) => {
-  const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'))
-  ctx.config = config
   ctx.db = db
   return next()
 })
@@ -237,16 +235,16 @@ bot.use(
 )
 
 bot.start(async (ctx, next) => {
-  const arg = ctx.message.text.split(' ')
-  if (arg[1] && ctx.config.logChatId) {
-    await ctx.tg.sendMessage(
-      ctx.config.logChatId,
-      `#${arg[1]}\n<code>${JSON.stringify(ctx.message, null, 2)}</code>`,
-      {
-        parse_mode: 'HTML'
-      }
-    )
-  }
+  // const arg = ctx.message.text.split(' ')
+  // if (arg[1] && ctx.config.logChatId) {
+  //   await ctx.tg.sendMessage(
+  //     ctx.config.logChatId,
+  //     `#${arg[1]}\n<code>${JSON.stringify(ctx.message, null, 2)}</code>`,
+  //     {
+  //       parse_mode: 'HTML'
+  //     }
+  //   )
+  // }
   return next()
 })
 

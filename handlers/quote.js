@@ -20,7 +20,6 @@ const quoteCountIO = io.meter({
 
 const telegram = new Telegram(process.env.BOT_TOKEN)
 
-const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'))
 
 // for create global sticker pack
 // telegram.createNewStickerSet(66478514, 'created_by_QuotLyBot', 'Created by @QuotLyBot', {
@@ -570,16 +569,16 @@ module.exports = async (ctx, next) => {
 
           const sticketSet = await ctx.getStickerSet(packName)
 
-          if (ctx.session.userInfo.tempStickerSet.create) {
-            sticketSet.stickers.forEach(async (sticker, index) => {
-              // wait 3 seconds before delete sticker
-              await new Promise((resolve) => setTimeout(resolve, 3000))
+          // if (ctx.session.userInfo.tempStickerSet.create) {
+          //   sticketSet.stickers.forEach(async (sticker, index) => {
+          //     // wait 3 seconds before delete sticker
+          //     await new Promise((resolve) => setTimeout(resolve, 3000))
 
-              if (index > config.globalStickerSet.save_sticker_count - 1) {
-                telegram.deleteStickerFromSet(sticker.file_id).catch(() => { })
-              }
-            })
-          }
+          //     if (index > config.globalStickerSet.save_sticker_count - 1) {
+          //       telegram.deleteStickerFromSet(sticker.file_id).catch(() => { })
+          //     }
+          //   })
+          // }
 
           sendResult = await ctx.replyWithSticker(sticketSet.stickers[sticketSet.stickers.length - 1].file_id, {
             reply_to_message_id: ctx.message.message_id,

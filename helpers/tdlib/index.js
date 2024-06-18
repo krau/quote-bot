@@ -1,9 +1,13 @@
 const path = require('path')
 const tdl = require('tdl')
+const { getTdjson } = require('prebuilt-tdlib')
 
-const tdDirectory = path.resolve(__dirname, 'data')
 
-tdl.configure({ libdir: tdDirectory, verbosityLevel: 0 })
+tdl.configure({
+  tdjson: getTdjson(),
+})
+
+const tdDirectory = path.join(__dirname, 'data')
 
 const client = tdl.createClient({
   apiId: process.env.TELEGRAM_API_ID,
@@ -20,13 +24,13 @@ const client = tdl.createClient({
 client.on('error', console.error)
 client.loginAsBot(process.env.BOT_TOKEN)
 
-function sendMethod (method, parm) {
+function sendMethod(method, parm) {
   return new Promise((resolve, reject) => {
     client.invoke(Object.assign({ _: method }, parm)).then(resolve).catch(resolve)
   })
 }
 
-function getUser (userID) {
+function getUser(userID) {
   return new Promise((resolve, reject) => {
     sendMethod('getUser', {
       user_id: userID
@@ -46,7 +50,7 @@ function getUser (userID) {
   })
 }
 
-function getSupergroup (supergroupID) {
+function getSupergroup(supergroupID) {
   return new Promise((resolve, reject) => {
     sendMethod('getSupergroup', {
       supergroup_id: supergroupID
@@ -61,7 +65,7 @@ function getSupergroup (supergroupID) {
   })
 }
 
-function getChat (chatID) {
+function getChat(chatID) {
   return new Promise((resolve, reject) => {
     sendMethod('getChat', {
       chat_id: chatID
@@ -112,7 +116,7 @@ function getChat (chatID) {
   })
 }
 
-function decodeWaveform (wf) {
+function decodeWaveform(wf) {
   const bitsCount = wf.length * 8
   const valuesCount = ~~(bitsCount / 5)
 
@@ -130,15 +134,15 @@ function decodeWaveform (wf) {
   const lastByteIdx = ~~((lastIdx * 5) / 8)
   const lastBitShift = (lastIdx * 5) % 8
   const lastValue =
-      lastByteIdx === wf.length - 1
-        ? wf[lastByteIdx]
-        : wf.readUInt16LE(lastByteIdx)
+    lastByteIdx === wf.length - 1
+      ? wf[lastByteIdx]
+      : wf.readUInt16LE(lastByteIdx)
   result[lastIdx] = (lastValue >> lastBitShift) & 0b11111
 
   return result
 }
 
-function getMessages (chatID, messageIds) {
+function getMessages(chatID, messageIds) {
   const tdlibMessageIds = messageIds.map((id) => id * Math.pow(2, 20))
 
   return new Promise((resolve, reject) => {

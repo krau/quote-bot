@@ -1,0 +1,136 @@
+---
+language_name: "🇨🇳 简体中文"
+description:
+  short: |
+    语录生成 Bot (Edited by Krau).
+    使用 /q 回复一条消息, 或者直接将其发给 Bot.
+  long: |
+    记录群友怪话!
+help: |2
+  <b>你好！</b>
+  语录生成 Bot (Edited by Krau).
+  使用 /q 回复一条消息, 或者直接将其发给 Bot.
+  在群组或私聊中都可使用.
+
+    <b>⚙️ 可用命令:</b>
+  /q — 生成语录 <i>[回复消息]</i>
+
+  若要从多条消息中生成语录，请将数字作为参数写入，以指示语录中应包含多少条消息。
+  在私聊中，您可以一次转发多条消息给我，我将从中生成语录。
+
+    <b>/q 命令可用的标记:</b>
+      十六进制代码或颜色名称: <code>#cbafff</code> 或 <code>靛蓝</code> — 使用颜色 <b>#cbafff</b> 生成语录
+      <code>random</code> —随机颜色
+      <code>回复</code> 或 <code>r</code> — 生成带有回复的语录
+      <code>p</code> 或 <code>png</code> — 生成 PNG 语录
+      <code>i</code> 或 <code>img</code> — 以图片形式生成语录
+      <code>rate</code> — 锐评语录
+      <code>m</code> 或 <code>media</code> —包含媒体
+      <code>c</code> 或 <code>crop</code> — 裁剪媒体
+      <code>s2.5</code> — 图片质量是标准的 2.5 倍 <i>(可以设置任何值)</i>
+
+    <b>参数示例:</b>
+    <code>/q 3 白色 rp</code>
+    <code>/q i 红色 s3.2</code>
+    <code>/q r 2 #cbafff m</code>
+    <code>/q 5 rm</code>
+
+  仅限管理员使用:
+  <code>/qs 🥰💜</code> — 将表情符号🥰💜的贴纸/照片/带照片的照片保存到群组的贴纸包中<i>(表情符号可以是任何和任意数量)</i> <i>[回复消息]</i>
+  <code>/qd</code> — 从群组的贴纸包中移除贴纸 <i>[回复消息]</i>
+  <code>/qdrand</code> — 从群组的随机贴纸中移除贴纸 <i>[回复消息]</i>
+  <code>/qb</code> — 设置表情品牌。可用选项: <code>apple</code>, <code>google</code>, <code>twitter</code>, <code>joypixels</code>, <code>blob</code>
+  <code>/qcolor 绿色</code> — 将语录贴纸颜色设为 <b>绿色</b> 默认值 <i>(十六进制代码或颜色名称)</i>
+  <code>/qemoji</code> — 更改贴纸的表情后缀
+  <code>/qrate</code> — 启用/禁用语录评分
+  <code>/qgab 300</code> — 设置随机出现语录的机会. 数字越高可能性越低. 设为 0 以禁用.
+
+  /qrand — 随机一条语录
+  /qtop — 最热语录
+
+  /help 或 /start — 获取此文本
+
+  /lang — 更改语言
+help_group: |
+  使用 /q 回复一条消息, 或者直接将其发给 Bot.
+  私聊获取详细命令帮助.
+btn:
+  add_group: 添加到群组
+  help: 帮助
+quote:
+  unsupported_message: 不支持的消息
+  api_error: |
+    <b>😓 生成失败</b>
+    <pre>${error}</pre>
+  empty_forward: |
+    请回复一条消息.
+  set_background_color: |
+    引用贴纸的底色已设置为: <code>${backgroundColor}</code>
+  set_emoji_brand: |
+    表情品牌已设置为： <code>${emojiBrand}</code>
+  sticker:
+sticker:
+  save:
+    suc: 贴纸已成功添加到 <a href="${link}">群组贴纸包</a>。
+    error:
+      animated: 无法添加动态贴纸。
+      need_creator: <b>未能保存此贴纸。</b>\n${creator} 请先私聊我1下.
+      telegram: <b>未能保存该贴纸。</b>\n<pre>${error}</pre>
+  delete:
+    suc: 贴纸已从 <a href="${link}">群组贴纸包</a> 中移除。
+    error:
+      telegram: <b>无法保存此贴纸。</b>\n<pre>${error}</pre>
+    btn:
+      save_sticker: 保存贴纸
+  delete_random:
+    suc: 贴纸已从群组随机贴纸中移除。
+    error: <b>无法删除该贴纸。</b>\n<pre>${error}</pre>
+  empty_forward: |
+    请回复一条消息.
+  fstik: |
+    这个 Bot 不支持此功能.
+rate:
+  vote:
+    rated: |
+      您 ${rateName} 了它。
+    back: |
+      您的锐评已撤回。
+  settings:
+    enable: |
+      语录评价已启用。
+    disable: |
+      语录评价已关闭。
+random:
+  empty: |
+    群组中没有带正面评价的语录。
+  gab: |
+    随机语录的概率已设置为 ${gab}
+hidden:
+  settings:
+    enable: |
+      发送者搜索已启用。
+    disable: |
+      发送者搜索已禁用。
+privacy:
+  settings:
+    enable: |
+      隐私模式已开启。
+    disable: |
+      隐私模式已关闭。
+top:
+  info: |
+    <b>热度最高的群组引用：</b>
+  open: 打开热度排行
+emoji:
+  info: |
+    请提供 emoji
+
+    例如, <code>/qemoji💜</code> 会将后缀更改为💜，用于所有后续的新贴纸。
+    随机表情符号: <code>/qemoji random</code>
+  done: Emoji 添加成功！
+only_admin: |
+  只有群组管理员可以使用此命令。
+only_group: |
+  此命令只能在群组中使用。
+rate_limit: |
+  太快了, 不行! (limit: ${seconds} 秒)

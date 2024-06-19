@@ -25,7 +25,7 @@ Telegram quote bot
 在同目录下新建 `data/fonts` 文件夹，将字体文件放入其中
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### 无 MongoDB
@@ -68,5 +68,5 @@ services:
 在同目录下新建 `data/fonts` 文件夹，将字体文件放入其中
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```

@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.env.example'
+      - 'placeholder.png'
   workflow_dispatch:
 
 jobs:

@@ -9,6 +9,7 @@ Telegram quote bot
 - 使用 `prebuilt-tdlib`, **无需自行编译 tdlib**
 - 删除广告和赞助 (adv, donate)
 - 删除状态统计和无意义的日志 (stats)
+- 删除 AI 功能 (openai)
 - 删除全局贴纸包相关功能 (globalStickerSet, ioredis)
 - 更好的中文翻译
 - 开箱即用 docker 镜像

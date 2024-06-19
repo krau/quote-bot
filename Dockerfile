@@ -6,5 +6,4 @@ WORKDIR $WORKDIR
 ADD . $WORKDIR
 
 RUN apk add --no-cache g++ make && \
-    npm install && \
-    apk del .gyp
+    npm install && apk del g++ make

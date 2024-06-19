@@ -3,7 +3,6 @@ const {
   tdlib
 } = require('../helpers')
 const Telegram = require('telegraf/telegram')
-const fs = require('fs')
 const got = require('got')
 const EmojiDbLib = require('emoji-db')
 const io = require('@pm2/io')
@@ -20,41 +19,9 @@ const quoteCountIO = io.meter({
 
 const telegram = new Telegram(process.env.BOT_TOKEN)
 
-
-// for create global sticker pack
-// telegram.createNewStickerSet(66478514, 'created_by_QuotLyBot', 'Created by @QuotLyBot', {
-//   png_sticker: { source: 'placeholder.png' },
-//   emojis: '💜'
-// }).then(console.log)
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
-
-// let botInfo
-
-// async function loopClearStickerPack() {
-//   if (!botInfo) botInfo = await telegram.getMe()
-
-//   setTimeout(async () => {
-//     const stickerSet = await telegram.getStickerSet(config.globalStickerSet.name + botInfo.username).catch((error) => {
-//       console.warn('loopClearStickerPack getStickerSet error:', error)
-//     })
-//     if (!stickerSet) return
-//     for (const i in stickerSet.stickers) {
-//       const sticker = stickerSet.stickers[i]
-//       if (i > config.globalStickerSet.save_sticker_count - 1) {
-//         console.log(`deleting sticker ${stickerSet.stickers[i].file_id}`)
-//         await telegram.deleteStickerFromSet(sticker.file_id).catch((error) => {
-//           console.log('loopClearStickerPack deleteStickerFromSet error:', error)
-//         })
-//       }
-//     }
-//     loopClearStickerPack()
-//   }, 500)
-// }
-
-// loopClearStickerPack()
 
 const hashCode = (s) => {
   const l = s.length

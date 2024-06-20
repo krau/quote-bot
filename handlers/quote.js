@@ -340,6 +340,8 @@ module.exports = async (ctx, next) => {
       const replyMessageInfo = quoteMessage.reply_to_message
       if (replyMessageInfo.forward_from) {
         replyMessageInfo.from = replyMessageInfo.forward_from
+      } else if (replyMessageInfo.forward_from_chat) {
+        replyMessageInfo.from = replyMessageInfo.forward_from_chat
       }
       if (replyMessageInfo.from.first_name) message.replyMessage.name = replyMessageInfo.from.first_name
       if (replyMessageInfo.from.last_name) message.replyMessage.name += ' ' + replyMessageInfo.from.last_name

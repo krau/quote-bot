@@ -343,6 +343,7 @@ module.exports = async (ctx, next) => {
       } else if (replyMessageInfo.forward_from_chat) {
         replyMessageInfo.from = replyMessageInfo.forward_from_chat
       }
+      if (replyMessageInfo.from.title) message.replyMessage.name = replyMessageInfo.from.title
       if (replyMessageInfo.from.first_name) message.replyMessage.name = replyMessageInfo.from.first_name
       if (replyMessageInfo.from.last_name) message.replyMessage.name += ' ' + replyMessageInfo.from.last_name
       if (replyMessageInfo.from.id) {

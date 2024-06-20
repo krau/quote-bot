@@ -103,8 +103,8 @@ dist
 # TernJS port file
 .tern-port
 
-assets/fonts/*
-assets/emojis/*
+assets/
+data/
 helpers/tdlib/data
 
 !.gitkeep

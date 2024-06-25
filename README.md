@@ -57,7 +57,7 @@ services:
     volumes:
       - ./data/fonts:/app/assets/fonts
   mongodb:
-    image: mongo:4
+    image: mongo:latest
     restart: always
     volumes:
       - ./data/db:/data/db

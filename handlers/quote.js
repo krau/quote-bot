@@ -285,8 +285,13 @@ module.exports = async (ctx, next) => {
       text = quoteMessage.caption
       message.entities = quoteMessage.caption_entities
     } else {
-      text = quoteMessage.text
-      message.entities = quoteMessage.entities
+      if (ctx.update.message.quote) {
+        text = ctx.update.message.quote['text']
+        message.entities = ctx.update.message.quote.entities
+      } else {
+        text = quoteMessage.text
+        message.entities = quoteMessage.entities
+      }
     }
 
     if (!text) {
@@ -351,8 +356,8 @@ module.exports = async (ctx, next) => {
         message.replyMessage.chatId = hashCode(message.replyMessage.name)
       }
       if (ctx.update.message.reply_to_message.quote) {
-        replyMessageInfo.text = `" ${ctx.update.message.reply_to_message.quote['text'].toString()} "`
-        replyMessageInfo.entities = []
+        replyMessageInfo.text = ctx.update.message.reply_to_message.quote['text']
+        replyMessageInfo.entities = ctx.update.message.reply_to_message.quote.entities
       }
       if (replyMessageInfo.text) message.replyMessage.text = replyMessageInfo.text
       if (replyMessageInfo.caption) message.replyMessage.text = replyMessageInfo.caption

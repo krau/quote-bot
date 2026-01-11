@@ -140,7 +140,6 @@ module.exports = async (ctx, next) => {
     if (!firstMessage?.message_id) {
       return ctx.replyWithHTML(ctx.i18n.t('quote.empty_forward'), {
         reply_to_message_id: ctx.message.message_id,
-        allow_sending_without_reply: true,
         allow_sending_without_reply: true
       })
     }
@@ -350,6 +349,10 @@ module.exports = async (ctx, next) => {
         message.replyMessage.chatId = replyMessageInfo.from.id
       } else {
         message.replyMessage.chatId = hashCode(message.replyMessage.name)
+      }
+      if (ctx.update.message.reply_to_message.quote) {
+        replyMessageInfo.text = `" ${ctx.update.message.reply_to_message.quote['text'].toString()} "`
+        replyMessageInfo.entities = []
       }
       if (replyMessageInfo.text) message.replyMessage.text = replyMessageInfo.text
       if (replyMessageInfo.caption) message.replyMessage.text = replyMessageInfo.caption

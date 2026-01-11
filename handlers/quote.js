@@ -140,7 +140,8 @@ module.exports = async (ctx, next) => {
     if (!firstMessage?.message_id) {
       return ctx.replyWithHTML(ctx.i18n.t('quote.empty_forward'), {
         reply_to_message_id: ctx.message.message_id,
-        allow_sending_without_reply: true
+        allow_sending_without_reply: true,
+        allow_sending_without_reply: true,
       })
     }
   }
